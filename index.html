@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeHelp 第四屆申請</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #f5f5f5;
+      cursor: pointer;
+    }
+
+    .question:hover {
+      font-weight: bold;
+    }
+
+    .answer {
+      display: "block";
+      color: #333;
+      line-height: 1.5;
+      /* 與問題相同的顏色 */
+      padding: 20px;
+      padding-left: 50px;
+      padding-right: 100px;
+      margin-top: 10px;
+      background-color: #f5f5f5;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>WeHelp 第四屆申請</h1>
+  <h2>申請人：王雅茵</h2>
+  <h3>功能設計：toggle each question (JS), hover on answer (CSS)</h2>
+
+    <div class="question" onclick="toggleAnswer(1)">
+      <h3>1. 為了成為軟體工程師，曾做過什麼努力？若有具體專案作品請分享給我們。</h3>
+      <div class="answer" id="answer1" onclick="event.stopPropagation()">
+        <!-- 回答 -->
+
+        <p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt;
+line-height:150%'><span lang=EN-US style='font-size:12.0pt;
+line-height:150%;font-family:Wingdings;color:#202124'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+            </span></span><b><span style='font-size:12.0pt;line-height:150%;color:#202124'>網路服務設計</span></b></p>
+
+        <p class=MsoListParagraph style='margin-left:24.0pt;line-height:150%;'><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>在台大電機系的網服課程中，除了學習基本前端切版以及</span><span lang=EN-US
+            style='font-size:12.0pt;line-height:150%;font-family:Roboto;color:#202124'>ReactJS</span><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>框架，後期主要學習架設全端的應用，包含</span><span lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:Roboto;
+color:#202124'>MongoDB</span><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>的串接、</span><span lang=EN-US
+            style='font-size:12.0pt;line-height:150%;font-family:Roboto;color:#202124'>Node.js
+            / Express.js</span><span style='font-size:12.0pt;line-height:150%;color:#202124'>、</span><span lang=EN-US
+            style='font-size:12.0pt;
+line-height:150%;font-family:Roboto;color:#202124'>GraphQL</span><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>、</span><span lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:Roboto;
+color:#202124'>socket</span><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>連通</span><span lang=EN-US
+            style='font-size:12.0pt;line-height:150%;font-family:Roboto;color:#202124'>server</span><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>與</span><span lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:Roboto;
+color:#202124'>client</span><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>等。在期末報告（</span><span lang=EN-US
+            style='font-size:12.0pt;line-height:150%;font-family:Roboto;color:#202124'><a
+              href="http://gg.gg/14f2c1">http://gg.gg/14f2c1</a></span><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>）時，也因為不熟後端的原理，</span><span lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:Roboto;
+color:#202124'>GraphQL</span><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>的</span><span lang=EN-US
+            style='font-size:12.0pt;line-height:150%;font-family:Roboto;color:#202124'>subscription</span><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>一直建立不起來，導致前端的資料改變無法成功促發後端運作。但最終也透過與組員的合作，解決了問題！</span>
+        </p>
+
+        <p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt;
+line-height:150%'><span lang=EN-US style='font-size:12.0pt;
+line-height:150%;font-family:Wingdings;color:#202124'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+            </span></span><b><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>資料庫管理與系統</span></b></p>
+
+        <p class=MsoListParagraph style='margin-left:24.0pt;line-height:150%'><span style='
+          font-size:12.0pt;line-height:150%'>大學時為了學習</span><span lang=EN-US style='font-size:
+12.0pt;line-height:150%;font-family:Roboto;color:#202124'>SQL</span><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>，主動申請了</span><span lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:Roboto;
+color:#202124'>Coursera</span><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>的學習補助金，迅速修完兩門基礎課程並獲得了證書。隨後，我在</span><span lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:Roboto;
+color:#202124'>Leetcode</span><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>上解決了大部分的資料庫題目。最近，我也在台大完成了資料庫系統的課程，學到了</span><span lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:Roboto;
+color:#202124'>SQL</span><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>和</span><span lang=EN-US
+            style='font-size:12.0pt;line-height:150%;font-family:Roboto;color:#202124'>NoSQL</span><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>之外的知識，例如如何使用</span><span lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:Roboto;
+color:#202124'>API</span><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>串接不同</span><span lang=EN-US
+            style='font-size:12.0pt;line-height:150%;font-family:Roboto;color:#202124'>server</span><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>與</span><span lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:Roboto;
+color:#202124'>client</span><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>、撰寫</span><span lang=EN-US
+            style='font-size:12.0pt;line-height:150%;font-family:Roboto;color:#202124'>Cypher</span><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>以及設計資料庫</span><span lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:Roboto;
+color:#202124'>schema</span><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>等。</span></p>
+
+        <p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt;
+line-height:150%'><span lang=EN-US style='font-size:12.0pt;
+line-height:150%;font-family:Wingdings;color:#202124'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+            </span></span><b><span style='font-size:12.0pt;line-height:150%;color:#202124'>資料結構與演算法</span></b></p>
+
+        <p class=MsoListParagraph style='margin-left:24.0pt;line-height:150%;'><span
+            style='font-size:12.0pt;line-height:150%; color:#202124'>為了更深入，大四下旁聽了台大的</span><span lang=EN-US
+            style='font-size:12.0pt;line-height:150%;font-family:Roboto;color:#202124'>C/C++</span><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>語言課程，發現這又是一個巨大的挑戰。朋友指出我欠缺資料結構的概念，導致我在撰寫程式時缺乏效率。因此，在繁忙做碩士研究時，堅持選修生機系資料結構與演算法課程。我用</span><span
+            lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:Roboto;
+color:#202124'>Java</span><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>實作了許多經典的資料結構和演算法，例如紅黑樹和最短路徑等。雖然真的很難，但我還是活下來了！</span></p>
+
+        <p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt;
+line-height:150%'><span lang=EN-US style='font-size:12.0pt;
+line-height:150%;font-family:Wingdings;color:#202124'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+            </span></span><b><span style='font-size:12.0pt;line-height:150%;color:#202124'>物件導向程式語言</span></b><b><span
+              style='font-size:12.0pt;
+line-height:150%;font-family:Roboto;color:#202124'> <span lang=EN-US>(Java)</span></span></b></p>
+
+        <p class=MsoListParagraph style='margin-left:24.0pt;line-height:150%;'><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>為了更瞭解業界常用的物件導向程式語言，在碩一修了</span><span lang=EN-US
+            style='font-size:12.0pt;line-height:150%;font-family:Roboto;color:#202124'>Java</span><span
+            style='font-size:12.0pt;line-height:150%;color:#202124'>，並在沒有任何專案開發經驗和老師指導的情況下，我獨立完成了以</span><span
+            lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:Roboto;
+color:#202124'>JavaFX</span><span style='font-size:12.0pt;line-height:150%;
+color:#202124'>為基礎的的記帳軟體，以及小組合作的外送平台服務。這些經驗讓我發現我能夠沉浸在程式碼中並具有高度的自學能力。</span></p>
+
+      </div>
+    </div>
+
+    <div class="question" onclick="toggleAnswer(2)">
+      <h3>2. 如果參與這個計畫，會怎麼安排學習時間？</h3>
+      <div class="answer" id="answer2" onclick="event.stopPropagation()">
+        <!-- 回答內容 -->
+        <p class=MsoListParagraph style='margin-left:24.0pt;line-height:150%;'><span
+            style='font-size:12.0pt;line-height:150%; color:#202124'>由於這學期我即將畢業，我可以全心全意投入到基礎課程學習和專案開發中。
+            我願意從早到晚都安排程式學習（過去經驗證明我可以高度專注長時間寫程式），包括深入學習相關技術、參與實際專案、與同儕切磋，進行練習和挑戰等。
+            <br>同時，我也會利用額外的時間閱讀相關的技術文章和書籍，參與線上課程或工作坊，以不斷提升自己的技能和知識。
+            我相信通過這樣的學習安排，我可以在此學習計畫中取得全端網頁架構的能力。</span></p>
+      </div>
+    </div>
+
+    <div class="question" onclick="toggleAnswer(3)">
+      <h3>3. 是否有想要加入的軟體公司？為什麼想加入該公司？</h3>
+      <div class="answer" id="answer3" onclick="event.stopPropagation()">
+        <!-- 回答內容 -->
+        <p class=MsoListParagraph style='margin-left:24.0pt;line-height:150%;'><span
+            style='font-size:12.0pt;line-height:150%; color:#202124'>目前我對於加入哪家軟體公司還沒有具體的想法。
+            對我來說，最重要的是找到一家能夠讓我發揮所長、對公司產品有實質幫助並能夠持續學習的公司。
+            <br>我希望能夠在一個扁平化的企業環境中工作，這樣每個員工都能夠享有開放的心態和有發表想法的空間。
+            我相信這樣的工作環境能夠激發我更多的創造力和學習機會，同時也能夠為公司的發展做出積極的貢獻。</span></p>
+      </div>
+    </div>
+
+    <div class="question" onclick="toggleAnswer(4)">
+      <h3>4. 請描述一件讓你產生明顯負面情緒的事情，你如何處理該情緒？</h3>
+      <div class="answer" id="answer4" onclick="event.stopPropagation()">
+        <!-- 回答內容 -->
+        <p class=MsoListParagraph style='margin-left:24.0pt;line-height:150%;'><span
+            style='font-size:12.0pt;line-height:150%; color:#202124'>有一次在實驗室會議報告我的論文架構和成果時，老師對我的表達方式和口條不滿意，他認為這樣的表現讓人感到「毫無興趣」，並公開指出這樣的表現無法通過口試。
+            當下我非常慌張與難受，感到很自責，因為我事先做了很多準備，也為了畢業承受了很多壓力。
+            但我理解老師是在給我改進的機會，同時讓其他成員了解在口試中展現良好的表達能力是非常重要的。
+
+            <br>因此，我之後都會先準備完整的講稿並進行了多次練習。
+            很慶幸自己在正式的口試後，獲得了同學和老師的稱讚，很開心讓他們看到我的進步。也證明了自己願意接受批評並積極從中學習，提升自己的表現。
+
+          </span></p>
+      </div>
+    </div>
+
+    <div class="question" onclick="toggleAnswer(5)">
+      <h3>5. 關於這份申請網頁，請分享一個你開發時的技術心得。</h3>
+      <div class="answer" id="answer5" onclick="event.stopPropagation()">
+        <!-- 回答內容 -->
+        <p class=MsoListParagraph style='margin-left:24.0pt;line-height:150%;'><span
+          style='font-size:12.0pt;line-height:150%; color:#202124'>因為之前在網服的課程有學過靜態和動態的網頁設計（主要是用 React），但隔了幾個月沒有接觸，就變得有點生疏。
+          加上最近時間緊湊，有許多報告正在趕工，因此為了快速完成這份網頁，我依賴了一些偷吃步，例如用 Word 匯出 HTML 來確定基本的架構，以及借用 ChatGPT 的知識，還參考了以前的作品。<br>
+          這讓我體悟到生疏的技能即使生疏了，網路上有很多有用的資源都可以作為輔助，而我們也不能完全記得與熟練所有學過的知識。
+          這次經驗讓我更確定自己相較之下，更喜歡後端程式。
+          因為每次做前端常常卡在不知道要設計什麼（缺乏美術天份），還有要花大量的時間調整一些細微的切版問題。
+          後端開發中，我可以更專注於架構串接邏輯和資料庫管理等等，讓我覺得更有趣。
+        </span></p>
+      </div>
+    </div>
+
+    <div class="question" onclick="toggleAnswer(6)">
+      <h3>6. 其他想要對我們說的事情？</h3>
+      <div class="answer" id="answer6" onclick="event.stopPropagation()">
+        <!-- 回答內容 -->
+        <p class=MsoListParagraph style='margin-left:24.0pt;line-height:150%;'><span
+          style='font-size:12.0pt;line-height:150%; color:#202124'>過去處理後端的工作讓我感覺到實際將一個服務慢慢建立起來，讓人熱血沸騰。
+          最一開始，看到server可以透過幾行指令在自己的電腦開啟，覺得非常非常神奇。
+          每每看到同學或網路大神自己建立一些小工具，我都會很想要知道他們是「怎麼建立起來」的，但自己嘗試一些side projects時卻常常碰壁。
+          <br>例如，前陣子我想要串接加貨幣的交易所進行自動化交易，但AWS一直設定不好導致沒辦法實現量化交易的計畫。對於如何在雲端服務中綁定正確的指定IP並且運行Python套件，我研究非常久依然失敗。
+          在學校修課的過程中，也深覺有可以互相討論的同儕以及資深的大大相伴，對於持續不懈的學習歷程非常重要！
+          <br> WeHelp不僅有完整的學習資源與安排，還可以有志同道合的夥伴。因此，真的很希望有機會可以進入WeHelp，達成畢業後盡快轉職的目標。
+        </span></p>
+      </div>
+    </div>
+
+    <script>
+      function toggleAnswer(questionId) {
+        var answer = document.getElementById("answer" + questionId);
+
+        if (answer.style.display === "none") {
+          answer.style.display = "block";
+        } else {
+          answer.style.display = "none";
+        }
+      }
+    </script>
+</body>
+
+</html>
