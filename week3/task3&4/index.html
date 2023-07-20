@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 3 - Task 3 & 4</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- for desktop RWD -->
+  <div class="desktop-header">
+    <div class="left">My Website</div>
+    <div class="right">
+      <div class="item">Item1</div>
+      <div class="item">Item2</div>
+      <div class="item">Item3</div>
+      <div class="item">Item4</div>
+    </div>
+  </div>
+
+  <!-- for mobile phone RWD -->
+  <div class="mobile-header">
+    <div class="left">My Website</div>
+    <div class="right" style="padding: 0%">
+      <a href="javascript:void(0)" class="menu"><img src="img/hamburger.svg" alt="menu" style="height: 50px" /></a>
+      <div class="dropdown">
+        <div class="item"><a href="#">Item1</a></div>
+        <div class="item"><a href="#">Item2</a></div>
+        <div class="item"><a href="#">Item3</a></div>
+        <div class="item"><a href="#">Item4</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="title">
+    <h1>Welcome to My Website</h1>
+  </div>
+
+  <!-- main content-->
+  <div class="loading" style="display: flex ;justify-content: center;">
+    <img src="img/loading.svg" style="width: 200px;" />
+  </div>
+
+  <div class="main" style="display: none ;">
+    <div class="main-bar"></div>
+    <div class="gallery"></div>
+  </div>
+  <script src="script.js"></script>
+
+  <div class="butn">
+    <button class="loadBtn" style="padding: 10px;">Load More</button>
+  </div>
+</body>
+
+</html>

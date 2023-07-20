@@ -1,0 +1,293 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.desktop-header {
+  /* block會上下，所以要改成flex 才是左右 */
+  display: flex;
+  flex-shrink: 1;
+  padding-left: 5px;
+  height: 50px;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  background-color: white;
+  /* none: 固定配置 */
+  width: 200px;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  /* auto: 自動填滿 */
+  flex: auto;
+  padding: 5px;
+  width: 290px;
+  justify-content: flex-end;
+}
+
+.item {
+  flex: none;
+  margin-left: 10px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  background-color: rgb(220, 224, 242);
+  margin-bottom: 30px;
+}
+
+.main {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+  padding: 0%;
+  font-weight: bold;
+}
+
+.main-bar {
+  display: flex;
+  justify-content: center;
+  /* background-color: burlywood; */
+  width: 1200px;
+  margin-bottom: 20px;
+}
+
+.promotion {
+  display: flex;
+  flex: auto;
+  margin: 0 10px;
+  align-items: center;
+  background-color: rgb(214, 220, 241);
+}
+
+.promotion:first-child {
+  margin-left: 0; /* 移除首個框框的左邊margin */
+}
+
+.promotion:last-child {
+  margin-right: 0; /* 移除最後一個框框的右邊margin */
+}
+
+.promotion img {
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
+.gallery {
+  width: 1200px;
+  display: flex;
+  /* width: 90%; */
+  justify-content: flex-start;
+  /* flex-direction: row; */
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.product {
+  width: calc((100% - 100px) / 6);
+  /* height: 270px; */
+  display: flex;
+  flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.image-card {
+  width: auto;
+  background-color: blanchedalmond;
+  overflow: hidden;
+  height: 290px;
+  position: relative;
+}
+
+.spot {
+  width: 100%;
+  height: 100%;
+  object-position: 50% 50%;
+  align-items: center;
+  object-fit: cover;
+}
+
+.title-inner {
+  display: flex;
+  padding: 3px;
+  height: 60px;
+  align-items: center;
+  /* overlapping */
+  z-index: 1;
+  position: absolute;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.butn {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+/* Advance todos: add stars */
+.recommended {
+  /* for overlapping image */
+  width: 100%;
+  height: 100%;
+  object-position: 50% 50%;
+  align-items: center;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.star {
+  z-index: 1;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: auto;
+  height: 25px;
+}
+
+.mobile-header {
+  display: none;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  z-index: 5;
+}
+
+.dropdown {
+  display: none; /* Initially hide the dropdown */
+  width: 30%;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 5;
+  position: absolute;
+  top: 50px;
+  height: 100vh;
+}
+
+.dropdown > .item {
+  padding: 20px 10px;
+  text-align: left;
+  font-weight: 500;
+  margin-right: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.dropdown > .item a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+/* RWD for 600~1200 */
+@media (max-width: 1200px) {
+  /* 桌機螢幕min是1280 */
+  .main-bar {
+    /*  wrap 表示允許元件往下跑, 跑多少則由元素寬度決定*/
+    flex-wrap: wrap;
+    width: 90%;
+  }
+  .promotion {
+    flex: auto;
+    width: 45%;
+    margin: 0 0 20px;
+  }
+  .promotion:first-child {
+    margin-right: 20px; /* 移除首個框框的左邊margin */
+  }
+  .promotion:last-child {
+    margin-bottom: 0px; /* 移除首個框框的左邊margin */
+  }
+
+  .gallery {
+    width: 90%;
+  }
+
+  .product {
+    width: calc((100% - 60px) / 4);
+    height: 100%;
+  }
+
+  .image-card {
+    width: 100%;
+    height: 240px;
+  }
+  .title-inner {
+    font-size: 15px;
+  }
+}
+/* RWD for 360~600 */
+/* 手機最小360 */
+@media (max-width: 600px) {
+  * {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  .desktop-header {
+    display: none;
+  }
+
+  .mobile-header {
+    /* block會上下，所以要改成flex 才是左右 */
+    display: flex;
+    padding-left: 5px;
+  }
+
+  .title {
+    position: relative;
+    top: 50px;
+  }
+
+  .main {
+    position: relative;
+    top: 50px;
+  }
+  .promotion {
+    width: 90%;
+    margin: 0 0 20px;
+  }
+  .promotion:first-child {
+    margin-right: 0px; /* 移除首個框框的左邊margin */
+  }
+  .product {
+    width: 100%;
+  }
+  .image-card {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+  }
+}
