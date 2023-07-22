@@ -1,14 +1,21 @@
-import requests
 from bs4 import BeautifulSoup
 import time
+import urllib.request
+
 
 def crawl_ptt_movie(num_pages):
     base_url = "https://www.ptt.cc/bbs/movie/index.html"
     post_entries = []
-
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
     for _ in range(num_pages):
-        response = requests.get(base_url)
-        soup = BeautifulSoup(response.text, 'html.parser')
+        # response = requests.get(base_url)
+        # soup = BeautifulSoup(response.text, 'html.parser')
+        request = urllib.request.Request(base_url, headers=headers)
+        with urllib.request.urlopen(request) as response:
+            html_content = response.read()
+
+        soup = BeautifulSoup(html_content, 'html.parser')
 
         for entry in soup.find_all("div", class_="r-ent"):
             title = entry.find("div", class_="title").get_text(strip=True)
@@ -27,14 +34,24 @@ def crawl_ptt_movie(num_pages):
 
     return post_entries
 
+
 def get_publish_time(post_url):
-    response = requests.get(post_url)
-    soup = BeautifulSoup(response.text, 'html.parser')
+    # response = requests.get(post_url)
+    # soup = BeautifulSoup(response.text, 'html.parser')
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+
+    request = urllib.request.Request(post_url, headers=headers)
+    with urllib.request.urlopen(request) as response:
+        html_content = response.read()
+    soup = BeautifulSoup(html_content, 'html.parser')
+
     date_elements = soup.find_all("span", class_="article-meta-value")
     if len(date_elements) >= 4:
         return date_elements[3].get_text()
     else:
         return "Unknown"
+
 
 def save_to_file(data, file_path):
     with open(file_path, 'w', encoding='utf-8') as file:
