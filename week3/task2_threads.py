@@ -33,21 +33,17 @@ def crawl_ptt_movie(base_url, post_entries):
     return post_entries
 
 
-def get_page(iter):
-    global link
+def get_page(iter, link):
 
-    if (iter != 0):
+    if (iter == 0):
+        return link
+    else:
         soup = get_crawl_content(link)
         next_link = soup.find("a", string="‹ 上頁")
 
         if next_link:
             next_link = "https://www.ptt.cc" + next_link["href"]
-            link = next_link
-
-    else:
-        link = base_url
-
-    return link
+            return next_link
 
 
 def get_publish_time(post_url):
@@ -74,10 +70,13 @@ if __name__ == "__main__":
     threads = []
     post_entries = []
     base_url = 'https://www.ptt.cc/bbs/movie/index.html'
+    next_link = base_url
     for i in range(num_threads):
+        next_link = get_page(i, next_link)
+        # print(f'{i} = {next_link}')
         # first get all links then start threading
         thread = threading.Thread(
-            target=crawl_ptt_movie, args=(get_page(i), post_entries))
+            target=crawl_ptt_movie, args=(next_link, post_entries))
         thread.start()
         threads.append(thread)
 
