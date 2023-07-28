@@ -50,7 +50,7 @@ function createGalleryElement(attraction) {
 
 // Function to display attractions
 let attractions = undefined;
-async function displayAttractions(curImgNum, displayImgNum) {
+async function displayAttractions(displayImgNum) {
   if (!attractions) {
     const attractionsUrl = "https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json";
     attractions = await fetchData(attractionsUrl);
@@ -62,7 +62,7 @@ async function displayAttractions(curImgNum, displayImgNum) {
 
   if (attractions.length > 0) {
     // Display the first 3 attractions on the bar
-    if (curImgNum === 0) {
+    if (getImgNum() === 0) {
       for (let i = 0; i < 3; i++) {
         const attraction = attractions[i];
         const attractionElement = createBarElement(attraction);
@@ -71,15 +71,19 @@ async function displayAttractions(curImgNum, displayImgNum) {
       }
     }
     // Display the next 12 attractions below the top 3
-    for (let j = getImgIndex(); j < displayImgNum && j < attractions.length; j++) {
+    let index = getImgNum()
+    
+    for (let j = index; j < index + displayImgNum && j < attractions.length; j++) {
       const attraction = attractions[j];
       const attractionElement = createGalleryElement(attraction);
       galleryDiv.appendChild(attractionElement);
-      if (updateCurImgNum(j + 1) == attractions.length) {
-        document.querySelector(".loadBtn").textContent = "No more atractions";
-        document.querySelector(".loadBtn").disabled = true;
-      }
+      updateCurImgNum(j + 1);
     }
+    if (getImgNum() >= attractions.length) {
+      document.querySelector(".loadBtn").textContent = "No more atractions";
+      document.querySelector(".loadBtn").disabled = true;
+    }
+
   } else {
     galleryDiv.textContent = "No attractions found";
   }
@@ -90,11 +94,11 @@ let curImgNum = 0; let defaultImgNum = 12;
 function updateCurImgNum(newImgNum) {
   curImgNum = newImgNum;
 }
-function getImgIndex() {
+function getImgNum() {
   return curImgNum;
 }
 
-displayAttractions(curImgNum, defaultImgNum);
+displayAttractions(defaultImgNum);
 
 // handle loading
 document.querySelector(".main").addEventListener(
@@ -108,16 +112,17 @@ document.querySelector(".main").addEventListener(
     document.querySelector(".main").textContent = "Failed to load image.";
   });
 
-// handle button click to load more
-function imgAddCount(addNum) {
-  return curImgNum += addNum
-};
+// // handle button click to load more
+// function imgAddCount(addNum) {
+//   return curImgNum += addNum
+// };
 
 document.addEventListener('DOMContentLoaded', () => {
   const loadBtn = document.querySelector(".loadBtn");
-  loadBtn.addEventListener('click', () => 
-    displayAttractions(curImgNum, imgAddCount(12))
-  );
+  loadBtn.addEventListener('click', () => {
+    displayAttractions(12)
+    console.log("getImgNum= " + getImgNum())
+  });
 });
 
 // ==== code for w1 assignment ====
