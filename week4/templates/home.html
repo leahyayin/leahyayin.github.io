@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Week 4 Assignment</title>
+</head>
+
+<body>
+    <h1>登入系統</h1>
+    <form method="post" action="/signin" onsubmit="return validateForm()">
+        <label for="username">帳號：</label>
+        <input type="text" name="username" id="username">
+        <br>
+        <label for="password">密碼：</label>
+        <input type="password" name="password" id="password">
+        <br>
+        <input type="checkbox" id="checkbox" class="agreeBox" name="checkbox">
+        <label for="checkbox">我同意使用條款</label>
+        <br>
+        <input type="submit" value="登入">
+    </form>
+
+    <hr>
+    <h1>計算正整數平方</h1>
+    <input type="text" class="inputNumber" placeholder="請輸入1個正整數">
+    <button onclick="calculateSquared()">計算</button>
+
+    <script>
+        function validateForm() {           
+            let checkboxChecked = document.querySelector(".agreeBox").checked;
+            if (!checkboxChecked) {
+                alert('Please check the checkbox first');
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+        }
+
+        function calculateSquared() {
+            let inputNumber = document.querySelector(".inputNumber").value;
+            if (isNaN(inputNumber) || inputNumber <= 0) {
+                alert("Please enter a positive number.");
+                document.querySelector(".inputNumber").value = ""
+            } else {
+                window.location.href = `/square/${inputNumber}`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
