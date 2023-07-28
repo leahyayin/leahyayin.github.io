@@ -19,7 +19,7 @@ function createBarElement(attraction) {
   img.src = "https://" + attraction.file.split("https://")[1];
   img.alt = attraction.stitle;
   barDiv.appendChild(img);
-  
+
   const title = document.createTextNode(attraction.stitle);
   barDiv.appendChild(title);
   return barDiv;
@@ -71,13 +71,12 @@ async function displayAttractions(curImgNum, displayImgNum) {
       }
     }
     // Display the next 12 attractions below the top 3
-    for (let i = curImgNum; i < displayImgNum && i < attractions.length; i++) {
-      const attraction = attractions[i];
+    for (let j = getImgIndex(); j < displayImgNum && j < attractions.length; j++) {
+      const attraction = attractions[j];
       const attractionElement = createGalleryElement(attraction);
       galleryDiv.appendChild(attractionElement);
-
-      if (updateCurImgNum(i + 1) == attractions.length) {
-        document.querySelector(".loadBtn").textContent = "No more attractions";
+      if (updateCurImgNum(j + 1) == attractions.length) {
+        document.querySelector(".loadBtn").textContent = "No more atractions";
         document.querySelector(".loadBtn").disabled = true;
       }
     }
@@ -90,8 +89,11 @@ async function displayAttractions(curImgNum, displayImgNum) {
 let curImgNum = 0; let defaultImgNum = 12;
 function updateCurImgNum(newImgNum) {
   curImgNum = newImgNum;
+}
+function getImgIndex() {
   return curImgNum;
 }
+
 displayAttractions(curImgNum, defaultImgNum);
 
 // handle loading
@@ -107,16 +109,15 @@ document.querySelector(".main").addEventListener(
   });
 
 // handle button click to load more
-function imgAddCount(imgNum) {
-  // load once, add 12 image, 50 in total
-  curImgNum += 12
-  return curImgNum
+function imgAddCount(addNum) {
+  return curImgNum += addNum
 };
-document.addEventListener('DOMContentLoaded', function () {
+
+document.addEventListener('DOMContentLoaded', () => {
   const loadBtn = document.querySelector(".loadBtn");
-  loadBtn.addEventListener('click', function () {
-    displayAttractions(curImgNum, imgAddCount());
-  });
+  loadBtn.addEventListener('click', () => 
+    displayAttractions(curImgNum, imgAddCount(12))
+  );
 });
 
 // ==== code for w1 assignment ====
