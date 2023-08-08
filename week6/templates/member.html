@@ -74,7 +74,7 @@
     <h1>Welcome, Dear {{ name }} !</h1>
     <h2>這是會員頁面 <a href='/signout'>登出</a></h2>
     <hr>
-    <form method="post" onsubmit="return validatePost()">
+    <form method="post" action="/createMessage" onsubmit="return validatePost()">
         <h2>我要留言</h2>
         <textarea name="content" id="msg" rows="4" cols="30" placeholder="Enter your message"></textarea><br>
         <button type="submit">Send</button>
@@ -91,11 +91,9 @@
                 <td class="column2">{{ message[2] }}</td>
                 <td class="column3">
                     {% if name == message[1] %}
-                    <form method="post" action="/member" style="padding: 0%; margin: 0%;">
-                        <input type="hidden" name="delBtn" value={{message[0]}}>
-                        <button type="submit" onclick="return confirm('確定刪除此留言?')">
-                            X
-                        </button>
+                    <form method="post" action="/deleteMessage" style="padding: 0%; margin: 0%;">
+                        <button type="submit" name="delBtn" value={{message[0]}} 
+                                onclick="return confirm('確定刪除此留言?')">X</button>
                     </form>
                     {% endif %}
                 </td>
