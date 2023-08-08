@@ -63,29 +63,36 @@ def signout():
 @app.route('/member', methods = ['GET', 'POST'])
 def success():
     if session['signed_in']:
+        # get all messages
+        messages = get_messages(connection)
+        return render_template('member.html',
+                                name = session['name'], messages=messages) 
+    else: 
+        # if not signed in then direct to home page
+        return redirect(url_for('home')) 
+
+@app.route('/createMessage', methods = ['GET', 'POST'])
+def createMsg():
+    if session['signed_in']:
         if request.method == 'POST':
             # add messages
             content = request.form.get('content')
             if content:
                 print("id", session['id'])
                 add_message(connection, session['id'], content)
-                return redirect('/member')
             
+    return redirect('/member')
+
+@app.route('/deleteMessage', methods = ['GET', 'POST'])
+def delMsg():
+    if session['signed_in']:
+        if request.method == 'POST':
             # delete message
             message_id = request.form.get('delBtn')
             if message_id:
                 delete_message(connection, message_id)
-                return redirect('/member')
-
-        if request.method == 'GET':
-            # get all messages
-            messages = get_messages(connection)
-            return render_template('member.html',
-                                    name = session['name'], messages=messages)
     
-    else: 
-        # if not signed in then direct to home page
-        return redirect(url_for('home')) 
+    return redirect('/member')
 
 @app.route('/error')
 def error():
