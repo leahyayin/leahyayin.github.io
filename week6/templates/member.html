@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <title>Member Page</title>
+    <style>
+        * {
+            text-align: center;
+            margin: 10px 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 30px;
+        }
+
+        textarea {
+            text-align: left;
+            padding: 5px;
+        }
+
+        .table-container {
+            /* display: flex;
+            width: 85%;
+            max-width: 600px;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto; */
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .table {
+            border-collapse: collapse;
+            max-width: 700px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            overflow-wrap: break-word;
+        }
+
+        .column1 {
+            width: 10%;
+        }
+
+        .column2 {
+            width: 80%;
+        }
+
+        .column3 {
+            width: auto;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .column3 button {
+            border: 0cm;
+            margin: 0px;
+            padding: 0;
+            background-color: white;
+            font-size: large;
+            font-weight: bolder;
+            color: brown;
+        }
+
+        .table td {
+            padding: 10px;
+            margin: 0px;
+            border-bottom: 1px solid #989898;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome, Dear {{ name }} !</h1>
+    <h2>這是會員頁面 <a href='/signout'>登出</a></h2>
+    <hr>
+    <form method="post" onsubmit="return validatePost()">
+        <h2>我要留言</h2>
+        <textarea name="content" id="msg" rows="4" cols="30" placeholder="Enter your message"></textarea><br>
+        <button type="submit">Send</button>
+    </form>
+    <hr>
+
+
+    <h2>留言板</h2>
+    <div class="table-container">
+        <table class="table">
+            {% for message in messages %}
+            <tr>
+                <td class="column1">{{ message[1] }}</td>
+                <td class="column2">{{ message[2] }}</td>
+                <td class="column3">
+                    {% if name == message[1] %}
+                    <form method="post" action="/member" style="padding: 0%; margin: 0%;">
+                        <input type="hidden" name="delBtn" value={{message[0]}}>
+                        <button type="submit" onclick="return confirm('確定刪除此留言?')">
+                            X
+                        </button>
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script>
+        function validatePost() {
+            if (!document.querySelector("#msg").value?.trim()) {
+                alert('不可輸入空白訊息'); return false;
+            } else return true
+        }
+        document.querySelector('form').addEventListener('submit', function (event) {
+            const content = document.querySelector('#msg').value;
+            if (content.length > 255) {
+                event.preventDefault(); // Prevent form submission
+                alert('Message too long. Word length must < 255');
+            }
+        });
+    </script>
+</body>
+
+</html>
