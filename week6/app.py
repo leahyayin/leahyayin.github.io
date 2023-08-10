@@ -73,24 +73,19 @@ def success():
 
 @app.route('/createMessage', methods = ['GET', 'POST'])
 def createMsg():
-    if session['signed_in']:
-        if request.method == 'POST':
-            # add messages
-            content = request.form.get('content')
-            if content:
-                print("id", session['id'])
-                add_message(connection, session['id'], content)
-            
+    # add messages
+    content = request.form.get('content')
+    if content:
+        print("id", session['id'])
+        add_message(connection, session['id'], content)      
     return redirect('/member')
 
 @app.route('/deleteMessage', methods = ['GET', 'POST'])
 def delMsg():
-    if session['signed_in']:
-        if request.method == 'POST':
-            # delete message
-            message_id = request.form.get('delBtn')
-            if message_id:
-                delete_message(connection, message_id)
+    # delete message
+    message_id = request.form.get('delBtn')
+    if message_id:
+        delete_message(connection, message_id)
     
     return redirect('/member')
 
