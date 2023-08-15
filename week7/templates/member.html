@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../normalize.css" />
+    <title>Member Page</title>
+    <style>
+        * {
+            text-align: center;
+            margin: 10px 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 30px;
+        }
+
+        input {
+            text-align: left;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome! Dear <span id="welcome">{{name}}</span></h1>
+    <h2>這是會員頁面 <a href="/signout">登出</a></h2>
+    <hr />
+    <h2>查詢會員姓名</h2>
+    <input type="text" id="username" placeholder="欲查詢之會員帳號" /><br />
+    <button id="searchBtn" type="submit">查詢</button>
+    <div>
+        <p id="result" style="height: 40px;"></p>
+    </div>
+    <hr />
+    <h2>更新我的姓名</h2>
+    <input type="text" id="name" placeholder="新的姓名" /><br />
+    <button id="updateBtn" type="submit">更新</button>
+    <div id="updateRes"></div>
+
+    <script>
+        function validateText(divId, preName) {
+            text = document.querySelector(`#${divId}`).value?.trim();
+            if (!text) {
+                alert("不可輸入空白");
+                return false;
+            } else {
+                if (text.length > 255) {
+                    alert("Username too long. Word length must < 256");
+                    return false;
+                } else if (divId == "name" && text == preName) {
+                    alert("新名字請勿跟原本一樣");
+                    return false;
+                } else return text;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // for query the name
+            const searchBtn = document.querySelector("#searchBtn");
+            const resultDiv = document.querySelector("#result");
+
+            searchBtn.addEventListener("click", async () => {
+                const username = validateText("username");
+                if (username) {
+                    try {
+                        const response = await fetch(`/api/member?username=${username}`);
+                        if (response.ok) {
+                            const data = await response.json();
+                            console.log(response);
+                            console.log("data", data);
+                            if (data.data) {
+                                const memberInfo = data.data;
+                                resultDiv.innerHTML = `姓名：${memberInfo.name} (帳號：${memberInfo.username})`;
+                            } else {
+                                resultDiv.innerHTML = "查無會員資料";
+                            }
+                        }
+                    } catch (error) {
+                        console.error("Error:", error);
+                    }
+                }
+            });
+
+            // for update the name
+            const updateBtn = document.querySelector("#updateBtn");
+            const updateResDiv = document.querySelector("#updateRes");
+            let preName = "{{ name }}"
+            updateBtn.addEventListener("click", () => {
+                const newName = validateText("name", preName);
+                if (newName && newName !== preName) {
+                    fetch("/api/member/update_name", {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ "name": newName }),
+                    })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            console.log("update:", data);
+                            if (data.ok) {
+                                updateResDiv.innerHTML = "更新成功";
+                                document.querySelector("#welcome").innerHTML = newName;
+                                preName = newName;
+                            } else if (data.error) {
+                                updateResDiv.innerHTML = "更新失敗";
+                            } else {
+                                updateResDiv.innerHTML = "更新失敗：其他問題";
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Error:", error);
+                        });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
