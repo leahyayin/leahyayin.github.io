@@ -67,17 +67,6 @@ def success():
 
     return redirect(url_for('home')) 
 
-# @app.route('/api/member/<username>', methods=['GET'])
-# def get_member(username):
-#     if session['signed_in']:
-#         # username = request.args.get("username", None)
-#         print("username", username)
-#         if username:
-#             data = get_member_info(connection, username)
-#             if data:
-#                 return jsonify({'data': data})
-#     return jsonify({'data': None})
-
 @app.route('/api/member', methods=['GET'])
 def api_member():
     if (session['signed_in']):
@@ -97,8 +86,6 @@ def api_update_name():
                 session['name'] = new_name
                 return jsonify({"ok": True})
     return jsonify({"error":True})
-
-
 
 @app.route('/createMessage', methods = ['GET', 'POST'])
 def createMsg():
