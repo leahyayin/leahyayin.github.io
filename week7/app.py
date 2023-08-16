@@ -67,19 +67,26 @@ def success():
 
     return redirect(url_for('home')) 
 
-@app.route('/api/member', methods=['GET'])
+@app.route('/api/member', methods=['GET', 'PATCH'])
 def api_member():
-    if (session['signed_in']):
-        username = request.args.get("username", None).strip()
-        print("search name of user", username)
+    if request.method == 'GET':
+        return api_search_name()
+    if request.method == 'PATCH':
+        return api_update_name()
+    
+def api_search_name():
+    if session['signed_in']:
+        username = request.args.get("username", None)  
         if (username):
+            username = username.strip(); print(f"search name of user '{username}'")
             data = get_member_info(connection, username)
-            if data: return jsonify({'data': data})
+            if data: 
+                return jsonify({'data': data})
+
     return jsonify({'data': None})
 
-@app.route('/api/member/update_name', methods=['GET', 'PATCH'])
 def api_update_name():
-    if (request.method == 'PATCH' and session['signed_in']):
+    if session['signed_in']:
         new_name = request.json.get("name", None)
         if (new_name):
             if update_name(connection, new_name, session['id']):
